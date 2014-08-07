@@ -5,5 +5,9 @@ function startListening(btn){
 }
 
 function transformer(text){
-  return text;
+  if (text.indexOf("-AT-") != -1) {
+    return text.replace("-AT-", "@");
+  } else {
+    return text;
+  }
 }
