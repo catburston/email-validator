@@ -1,0 +1,20 @@
+context = describe;
+
+describe("replaces camuflated emails with normalized emails", function(){
+
+  describe("the transformer function", function(){
+    it("receives a string and returns the string", function() {
+      expect(transformer("string")).toBe("string");
+    });
+
+    it("Finds Camuflated Email and transforms it", function() {
+      expect(transformer("catburston-AT-gmail.com")).toBe("catburston@gmail.com");
+    });
+
+
+
+  })
+
+
+
+});
