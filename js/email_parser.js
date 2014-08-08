@@ -4,12 +4,21 @@ function startListening(btn){
   });
 }
 
+
+var illegalChunks = ['-AT-','(AT)'];
+
 function transformer(text){
-  if (text.indexOf("-AT-") != -1 &&
+  if ((text.indexOf("-AT-") != -1 || text.indexOf("(AT)") != -1) &&
       text.indexOf(".") >0 &&
       text.indexOf(" -AT-") == -1) {
-    return text.replace("-AT-", "@");
+
+        for(var x in illegalChunks){text = text.replace(illegalChunks[x],"@");}
+
+    //return text.replace("-AT-", "@");
   } else {
     return text;
-  }
+  };
+
+  return text;
+
 }
