@@ -1,6 +1,6 @@
 var illegalChunks = ['-AT-','(AT)','*AT*'];
 
-function transformer1(text){
+function transformer(text){
   if ((text.indexOf("-AT-") != -1 || text.indexOf("(AT)") != -1 || text.indexOf("*AT*") != -1) &&
       text.indexOf(".") >0 &&
       text.indexOf(" -AT-") == -1) {
@@ -17,6 +17,10 @@ function transformer1(text){
 }
 
 
+
+
+
+/*
 function transformer(text){
   for (var x in illegalChunks){
 
@@ -32,7 +36,7 @@ function transformer(text){
 
 }
 
-
+*/
 
 //for (var x in illegaChunks){
 
