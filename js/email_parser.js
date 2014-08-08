@@ -1,4 +1,4 @@
-var inputBox = document.getElementById('input-text');
+/*var inputBox = document.getElementById('input-text');
 var resultBox = document.getElementById('cleaned-text');
 var cleanerButton = document.getElementById('clean-button');
 
@@ -8,24 +8,20 @@ cleanerButton.addEventListener('click', function() {
     resultBox.innerHTML = cleanedText;
 });
 
-
-
-
-
-
+*/
 
 var illegalTextBlocks = ['-AT-','(AT)','*AT*'];
-
-
-
 
 function normalizeCamouflagedEmails(text){
 
   var cleanText;
 
-  if (checkTextForIllegalTextBlocks(text)) {
+  if (checkTextForIllegalTextBlocks(text)==true) {
+
         for(var x in illegalTextBlocks){
-          cleanText = text.replace(illegalTextBlocks[x],"@");}
+          cleanText = text.replace(illegalTextBlocks[x],"@");
+          console.log(cleanText);}
+
   } else {
     cleanText = text;
     return cleanText;
@@ -34,51 +30,16 @@ function normalizeCamouflagedEmails(text){
 };
 
 
-
-
-
 function checkTextForIllegalTextBlocks(text) {
   if((text.indexOf("-AT-") != -1 || text.indexOf("(AT)") != -1 || text.indexOf("*AT*") != -1) &&
         text.indexOf(".") >0 &&
         text.indexOf(" -AT-") == -1 &&
         text.indexOf(" (AT)") == -1) {
+    console.log("Contains")
     return true;
   } else {
+    console.log("doesnt")
     return false;
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function transformer1(text){
-  for (var x in illegalChunks){
-
-    if(text.indexOf(illegalChunks[x]) != -1 &&
-      text.indexOf(".") >0 &&
-      text.indexOf(" -AT-") == -1) {
-      text = text.replace(illegalChunks[x],"@");
-    } else {
-      console.log("here: "+text);
-    };
-      return text;
-  };
-
-}
