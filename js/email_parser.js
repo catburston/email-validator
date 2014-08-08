@@ -1,13 +1,6 @@
-function startListening(btn){
-  btn.addEventListener('click', function(event){
-    parseText();
-  });
-}
-
-
 var illegalChunks = ['-AT-','(AT)','*AT*'];
 
-function transformer(text){
+function transformer1(text){
   if ((text.indexOf("-AT-") != -1 || text.indexOf("(AT)") != -1 || text.indexOf("*AT*") != -1) &&
       text.indexOf(".") >0 &&
       text.indexOf(" -AT-") == -1) {
@@ -22,3 +15,32 @@ function transformer(text){
   return text;
 
 }
+
+
+function transformer(text){
+  for (var x in illegalChunks){
+
+    if(text.indexOf(illegalChunks[x]) != -1 && 
+      text.indexOf(".") >0 &&
+      text.indexOf(" -AT-") == -1) {
+      text = text.replace(illegalChunks[x],"@");
+    } else {
+      console.log("here: "+text);
+    };
+      return text;
+  };
+
+}
+
+
+
+//for (var x in illegaChunks){
+
+//  if(text.indexOf(illegaChunks[x]) != -1 && 
+//    text.indexOf(".") >0 &&
+//    text.indexOf(" -AT-") == -1){
+
+//    text = text.replace(illegalChunks[x],"@");
+//  }
+//};
+//return text;
