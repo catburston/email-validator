@@ -1,13 +1,41 @@
+var inputBox = document.getElementById('input-text');
+var resultBox = document.getElementById('cleaned-text');
+var cleanerButton = document.getElementById('clean-button');
+
+cleanerButton.addEventListener('click', function() {
+    var text = inputBox.value;
+    normalizeCamouflagedEmails(text);
+    resultBox.innerHTML = cleanedText;
+});
+
+
+
+
+
+
+
 var illegalTextBlocks = ['-AT-','(AT)','*AT*'];
 
+
+
+
 function normalizeCamouflagedEmails(text){
+
+  var cleanText;
+
   if (checkTextForIllegalTextBlocks(text)) {
-        for(var x in illegalTextBlocks){text = text.replace(illegalTextBlocks[x],"@");}
+        for(var x in illegalTextBlocks){
+          cleanText = text.replace(illegalTextBlocks[x],"@");}
   } else {
-    return text;
+    cleanText = text;
+    return cleanText;
   };
-  return text;
+  return cleanText;
 };
+
+
+
+
 
 function checkTextForIllegalTextBlocks(text) {
   if((text.indexOf("-AT-") != -1 || text.indexOf("(AT)") != -1 || text.indexOf("*AT*") != -1) &&

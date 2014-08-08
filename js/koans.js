@@ -10,7 +10,7 @@ describe("The application", function(){
     expect(normalizeCamouflagedEmails("catburston*AT*gmail.com")).toBe("catburston@gmail.com")
   });
 
-  it("finds something tha looks like an email, but its not and does not transform it", function() {
+  it("finds something that looks like an email, but is not and does not transform it", function() {
     expect(normalizeCamouflagedEmails("catburston -AT-gmail.com")).toBe("catburston -AT-gmail.com");
     expect(normalizeCamouflagedEmails("catburston (AT)gmail.com")).toBe("catburston (AT)gmail.com");
     expect(normalizeCamouflagedEmails("catburston-AT-gmail")).toBe("catburston-AT-gmail");
