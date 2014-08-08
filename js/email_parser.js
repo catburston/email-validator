@@ -1,6 +1,6 @@
 var illegalTextBlocks = ['-AT-','(AT)','*AT*'];
 
-function normalizeCamuflatedEmails(text){
+function normalizeCamouflagedEmails(text){
   if (checkTextForIllegalTextBlocks(text)) {
         for(var x in illegalTextBlocks){text = text.replace(illegalTextBlocks[x],"@");}
   } else {
