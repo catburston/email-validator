@@ -1,30 +1,49 @@
-var illegalChunks = ['-AT-','(AT)','*AT*'];
+var illegalTextBlocks = ['-AT-','(AT)','*AT*'];
 
-function transformer(text){
-  if ((text.indexOf("-AT-") != -1 || text.indexOf("(AT)") != -1 || text.indexOf("*AT*") != -1) &&
-      text.indexOf(".") >0 &&
-      text.indexOf(" -AT-") == -1) {
-
-        for(var x in illegalChunks){text = text.replace(illegalChunks[x],"@");}
-
-    //return text.replace("-AT-", "@");
+function normalizeCamuflatedEmails(text){
+  if (checkTextForIllegalTextBlocks(text)) {
+        for(var x in illegalTextBlocks){text = text.replace(illegalTextBlocks[x],"@");}
   } else {
     return text;
   };
-
   return text;
+};
 
+function checkTextForIllegalTextBlocks(text) {
+  if((text.indexOf("-AT-") != -1 || text.indexOf("(AT)") != -1 || text.indexOf("*AT*") != -1) &&
+        text.indexOf(".") >0 &&
+        text.indexOf(" -AT-") == -1 &&
+        text.indexOf(" (AT)") == -1) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 
 
 
 
-/*
-function transformer(text){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function transformer1(text){
   for (var x in illegalChunks){
 
-    if(text.indexOf(illegalChunks[x]) != -1 && 
+    if(text.indexOf(illegalChunks[x]) != -1 &&
       text.indexOf(".") >0 &&
       text.indexOf(" -AT-") == -1) {
       text = text.replace(illegalChunks[x],"@");
@@ -35,16 +54,3 @@ function transformer(text){
   };
 
 }
-
-*/
-
-//for (var x in illegaChunks){
-
-//  if(text.indexOf(illegaChunks[x]) != -1 && 
-//    text.indexOf(".") >0 &&
-//    text.indexOf(" -AT-") == -1){
-
-//    text = text.replace(illegalChunks[x],"@");
-//  }
-//};
-//return text;

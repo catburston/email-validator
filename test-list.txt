@@ -1,13 +1,21 @@
 "" => FILTERBUTTON => ""
 "string" => FILTERBUTTON => "string"
 "cat-AT-email.com" => FILTERBUTTON => "cat@email.com"
+"cat(AT)email.com" => FILTERBUTTON => "cat@email.com"
+"cat*AT*email.com" => FILTERBUTTON => "cat@email.com"
+
 "cat-AT-email" => FILTERBUTTON => "cat-AT-email"
+"cat*AT*email" => FILTERBUTTON => "cat*AT*email"
+"cat(AT)email" => FILTERBUTTON => "cat(AT)email"
+
 "cat -AT-email" => FILTERBUTTON => "cat -AT-email"
+"cat (AT)email" => FILTERBUTTON => "cat (AT)email"
+"cat *AT*email" => FILTERBUTTON => "cat *AT*email"
+
 
 "cat-AT-email-DOT-com" => FILTERBUTTON => "cat@email.com"
 "CAT-AT-email-DOT-com" => FILTERBUTTON => "cat@email.com"
 
-"cat(AT)email.com" => FILTERBUTTON => "cat@email.com"
 "cat(AT)email(DOT)com" => FILTERBUTTON => "cat@email.com"
 "CAT(AT)email(DOT)com" => FILTERBUTTON => "cat@email.com"
 
