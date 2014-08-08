@@ -9,7 +9,8 @@ describe("replaces camuflated emails with normalized emails", function(){
 
     it("Finds Camuflated Email and transforms it", function() {
       expect(transformer("catburston-AT-gmail.com")).toBe("catburston@gmail.com");
-      expect(transformer("catburston(AT)gmail.com")).toBe("catburston@gmail.com")
+      expect(transformer("catburston(AT)gmail.com")).toBe("catburston@gmail.com");
+      expect(transformer("catburston*AT*gmail.com")).toBe("catburston@gmail.com")
     });
    
     it("Finds something tha looks like an email, but its not and does not transform it", function() {

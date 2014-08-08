@@ -5,10 +5,10 @@ function startListening(btn){
 }
 
 
-var illegalChunks = ['-AT-','(AT)'];
+var illegalChunks = ['-AT-','(AT)','*AT*'];
 
 function transformer(text){
-  if ((text.indexOf("-AT-") != -1 || text.indexOf("(AT)") != -1) &&
+  if ((text.indexOf("-AT-") != -1 || text.indexOf("(AT)") != -1 || text.indexOf("*AT*") != -1) &&
       text.indexOf(".") >0 &&
       text.indexOf(" -AT-") == -1) {
 
