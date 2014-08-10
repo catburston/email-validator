@@ -1,45 +1,28 @@
-/*var inputBox = document.getElementById('input-text');
-var resultBox = document.getElementById('cleaned-text');
-var cleanerButton = document.getElementById('clean-button');
+var illegalTextBlocks = ['-AT-', '(AT)', '*AT*'];
 
-cleanerButton.addEventListener('click', function() {
-    var text = inputBox.value;
-    normalizeCamouflagedEmails(text);
-    resultBox.innerHTML = cleanedText;
-});
-
-*/
-
-var illegalTextBlocks = ['-AT-','(AT)','*AT*'];
-
-function normalizeCamouflagedEmails(text){
-
+function normalizeCamouflagedEmails(text) {
   var cleanText;
-
-  if (checkTextForIllegalTextBlocks(text)==true) {
-
-        for(var x in illegalTextBlocks){
-          cleanText = text.replace(illegalTextBlocks[x],"@");
-          console.log(cleanText);}
-
-  } else {
-    cleanText = text;
-    return cleanText;
-  };
-  return cleanText;
-};
-
-
-function checkTextForIllegalTextBlocks(text) {
-  if((text.indexOf("-AT-") != -1 || text.indexOf("(AT)") != -1 || text.indexOf("*AT*") != -1) &&
-        text.indexOf(".") >0 &&
-        text.indexOf(" -AT-") == -1 &&
-        text.indexOf(" (AT)") == -1) {
-    console.log("Contains")
-    return true;
-  } else {
-    console.log("doesnt")
-    return false;
+  for (var i = 0; i < illegalTextBlocks.length; i++) {
+    var tempText = text;
+    if (text.indexOf(" " + illegalTextBlocks[i]) != -1) {
+      // check for space in front of illegal string
+      tempText = text;
+    // } else if (text.indexOf(illegalTextBlocks[i]) > 0) {
+    //   // check for illegal block
+    //   cleanText = text;
+    } else if (text.indexOf(illegalTextBlocks[i]) != -1 && text.indexOf(".") > 0) {
+      // check for illegal string
+      tempText = text.replace(illegalTextBlocks[i],"@");
+    } else {
+      cleanText = text;
+    }
   }
+  cleanText = tempText;
+  return cleanText;
 }
 
+
+// accept text string
+// look for illegal blocks
+// check if there is a space before the block
+// check if the . index is > 0

@@ -1,5 +1,5 @@
 
-describe("The application", function(){
+describe("The email parser", function(){
   it("receives text without an email and returns the text unchanged", function() {
     expect(normalizeCamouflagedEmails("string")).toBe("string");
   });
@@ -16,6 +16,5 @@ describe("The application", function(){
     expect(normalizeCamouflagedEmails("catburston-AT-gmail")).toBe("catburston-AT-gmail");
     expect(normalizeCamouflagedEmails("catburston *AT*gmail")).toBe("catburston *AT*gmail");
   });
-
 
 })
